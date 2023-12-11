@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo - {{ $title }}</title>
+    <title>Demo {{ ' - ' . $title }}</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
@@ -91,15 +91,17 @@
                             <h3>{{ $title }}</h3>
                             <p class="text-subtitle text-muted">{{ $description ?? 'This is description' }}</p>
                         </div>
-                        <div class="col-12 col-md-6 order-md-2 order-first">
-                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a
-                                            href="index.html">{{ $breadcumb ?? 'This is breadcumb' }}</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
-                                </ol>
-                            </nav>
-                        </div>
+                        @if (isset($breadcumb))
+                            <div class="col-12 col-md-6 order-md-2 order-first">
+                                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html">{{ $breadcumb }}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{ $title }}
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="section">
